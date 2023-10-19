@@ -1,4 +1,3 @@
-```markdown
 # Data Analysis & Visualization in Finance
 
 ## Technical Analysis of Stocks using Python
@@ -41,7 +40,6 @@ import seaborn as sns
 import datetime
 import warnings
 warnings.filterwarnings('ignore')
-```
 
 Read data from a CSV file and display the first few rows:
 ```python
