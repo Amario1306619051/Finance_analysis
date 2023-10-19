@@ -1,51 +1,96 @@
-1. **Introduction**: Start with a brief introduction to your project, summarizing what it's about and what the reader can expect to find in the repository.
-
 ```markdown
-# Stock Data Analysis with Python
+# Data Analysis & Visualization in Finance
 
-This repository contains a comprehensive guide on how to use Python libraries like Pandas, Matplotlib, and Seaborn to analyze and visualize stock market data, with a focus on technical analysis. We'll walk you through the process of analyzing historical stock data, performing statistical analysis, trend analysis, correlation analysis, and volatility analysis.
+## Technical Analysis of Stocks using Python
+
+This repository provides a detailed guide on how to perform technical analysis of stocks using Python libraries like Pandas, Matplotlib, and Seaborn. The analysis includes insights derived from daily price-volume stock market data.
 
 ## Table of Contents
-- [About Data](#1-about-data)
-- [Understanding Data & General Statistics](#2-understanding-data--general-statistics)
-- [General Variation in Stock Price](#3-general-variation-in-stock-price)
-- [Day-to-Day Percentage Change (Daily Returns)](#4-day-to-day-percentage-changedaily-returns)
-- [Trend Analysis](#5-trend-analysis)
-- [Daily Returns and Volume](#6-daily-returns-and-volume)
-- [Correlation Analysis of Stocks](#7-correlation-analysis-of-stocks)
-- [Volatility Analysis](#8-volatility-analysis)
-- [Endnotes](#9-endnotes)
-- [References](#references)
+
+1. [About Data](#1-about-data)
+2. [Understanding Data & General Statistics](#2-understanding-data--general-statistics)
+3. [General Variation in Stock Price](#3-general-variation-in-stock-price)
+4. [Day-to-Day Percentage Change (Daily Returns)](#4-day-to-day-percentage-changedaily-returns)
+5. [Trend Analysis](#5-trend-analysis)
+6. [Daily Returns and Volume](#6-daily-returns-and-volume)
+7. [Correlation Analysis Of Stocks](#7-correlation-analysis-of-stocks)
+8. [Volatility Analysis](#8-volatility-analysis)
+9. [Endnotes](#9-endnotes)
+10. [References](#references)
+
+## 1. About Data
+
+For this analysis, 2 years of historical data from around mid-Feb 2018 to Feb 2020 of the below stocks listed on National Stock Exchange(NSE) were used:
+
+- HDFC Ltd.
+- Sun Pharmaceutical Industries Ltd.
+- Tata Consultancy Services Ltd.
+- Jindal Steel & Power Ltd.
+- Jubilant FoodWorks Ltd.
+
+The selected stocks are from different sectors and market cap.
+
+## 2. Understanding Data & General Statistics
+
+Import necessary libraries:
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import datetime
+import warnings
+warnings.filterwarnings('ignore')
 ```
 
-2. **About Data**: Describe the dataset you used in your analysis, including the stock names and the source of the data.
+Read data from a CSV file and display the first few rows:
+```python
+HDFC_df = pd.read_csv("your_data_file.csv")
+HDFC_df.head()
+```
 
-3. **Understanding Data & General Statistics**: Explain how to load and clean the data. Mention the libraries used and provide code snippets for each step.
+Since our time-frame of analysis is large, we can relax on the number of decimal places to consider. We'll also check for null values and drop them if any.
 
-4. **General Variation in Stock Price**: Describe how to visualize the general variation in stock price over a specified period. Include code for plotting stock prices.
+## 3. General Variation in Stock Price
 
-5. **Day-to-Day Percentage Change (Daily Returns)**: Explain how to calculate and visualize daily returns. Include code for calculating and plotting daily returns.
+Before moving on, we set the 'Date' column as the index of the dataframe. This makes plotting easy. We then plot the closing price of the stock over the 2-year period.
 
-6. **Trend Analysis**: Detail the process of analyzing stock trends based on daily returns. Provide code for categorizing and visualizing trends.
+## 4. Day-to-Day Percentage Change (Daily Returns)
 
-7. **Daily Returns and Volume**: Describe how daily returns are related to trading volume. Include code for plotting this relationship.
+We calculate the daily percentage change in the stock price and represent it in a plot. This helps in understanding daily stock returns.
 
-8. **Correlation Analysis of Stocks**: Explain how to analyze correlations between different stocks. Include code for calculating and visualizing correlations.
+## 5. Trend Analysis
 
-9. **Volatility Analysis**: Describe how to analyze the volatility of stocks and how to compare them. Include code for calculating and plotting volatility.
+We add a new column 'Trend' to categorize daily returns into different trends such as 'Slight Positive,' 'Negative,' 'Bull Run,' etc. We visualize the relative frequency of each trend using a pie chart.
 
-10. **Endnotes**: Mention any final thoughts, disclaimers, or future plans for the project.
+## 6. Daily Returns and Volume
 
-11. **References**: List any references or sources you used in your analysis.
+We plot the daily returns and juxtapose them with daily trade volume to observe the relationship between trading volume and stock price changes.
 
-12. **Conclusion**: Summarize the key insights and takeaways from your analysis.
+## 7. Correlation Analysis Of Stocks
 
-13. **How to Use**: Provide instructions on how others can use your code and reproduce your analysis.
+We perform correlation analysis between different stocks and visualize the relationships using pair plots and joint plots. This helps in diversification analysis.
 
-14. **Contributing**: If you want to open the project for contributions, provide guidelines on how others can contribute.
+## 8. Volatility Analysis
 
-15. **License**: Mention the license under which your project is shared.
+We analyze the volatility of stocks by calculating 7-day rolling mean and standard deviation. Volatility is compared between different stocks and the NIFTY 50 index.
 
-16. **Contact Information**: Provide your contact information or a way for users to reach out to you for questions or feedback.
+## 9. Endnotes
 
-Remember to include code snippets and visuals from your analysis throughout the README to make it more informative and engaging. Your README should serve as a comprehensive guide for anyone interested in your project.
+This section provides some closing thoughts on the analysis and emphasizes that there is no foolproof strategy for investing in the stock market.
+
+## References
+
+- Data Source: [Yahoo Finance](https://in.finance.yahoo.com/)
+- For Finance Technicalities: [Investopedia](https://www.investopedia.com/)
+
+Feel free to explore the repository and replicate the analysis for your own stock data.
+
+[Include any additional sections, usage instructions, and acknowledgments as needed.]
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+```
+
+Remember to replace `"your_data_file.csv"` with the actual file path or URL to your data file. You can customize this README to add more information, usage instructions, acknowledgments, and additional sections as needed.
